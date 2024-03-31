@@ -1,0 +1,23 @@
+@startuml VendasOnline
+
+class Produto {
+  -descricao: string
+  -preco: double
+}
+
+class Cliente {
+  -nome: string
+  -email: string
+}
+
+class Pedido {
+  -data: date
+  -status: string
+  adicionarProduto()
+  calcularTotal()
+}
+
+Cliente "1" -- "0..*" Pedido : faz
+Pedido "*" -- "*" Produto : contém
+
+@enduml

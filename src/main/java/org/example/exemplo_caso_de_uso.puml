@@ -1,0 +1,30 @@
+@startuml
+' Define o sistema
+rectangle "Sistema de Gerenciamento de Biblioteca" {
+    ' Casos de uso dentro do sistema
+    usecase (EmprestarLivro) as "Emprestar Livro"
+    usecase (DevolverLivro) as "Devolver Livro"
+    usecase (RenovarEmprestimo) as "Renovar Empréstimo"
+    usecase (ReservarLivro) as "Reservar Livro"
+    usecase (PagarMulta) as "Pagar Multa"
+
+    ' Relacionamentos de Inclusão
+    EmprestarLivro <.. ReservarLivro : <<include>>
+
+    ' Relacionamentos de Extensão
+    DevolverLivro <.. PagarMulta : <<extend>> (se atrasado)
+    EmprestarLivro <.. RenovarEmprestimo : <<extend>> (se já emprestado)
+}
+
+' Atores fora do sistema
+actor Usuario as "Usuário"
+actor Bibliotecario as "Bibliotecário"
+
+' Relacionamentos de Associação
+Usuario --> EmprestarLivro
+Usuario --> DevolverLivro
+Usuario --> ReservarLivro
+Bibliotecario --> PagarMulta
+Bibliotecario --> RenovarEmprestimo
+
+@enduml

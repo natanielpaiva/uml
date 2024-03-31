@@ -1,0 +1,19 @@
+@startuml
+start
+
+:Calibrador Recebe Lista de Itens;
+
+while (Item na Lista) is (sim)
+  :Calibrador Preenche Dados do Item;
+  if (Item OK ou Parcial?) then (sim)
+    :Proceder ao Próximo Item;
+  else (não)
+    :Marcar Item como NOK;
+    :Gerente do Posto Preenche Plano de Ação;
+  endif
+endwhile
+
+:Terceiro Ator Visualiza Dados;
+
+stop
+@enduml

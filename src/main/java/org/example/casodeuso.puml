@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+actor Cliente
+actor Administrador
+
+rectangle SistemaEcommerce {
+  Cliente -- (Realizar Pedido)
+  (Realizar Pedido) .> (Selecionar Produto) : include
+  (Realizar Pedido) .> (Aplicar Cupom de Desconto) : extend
+  Cliente -- (Selecionar Produto)
+  Cliente -- (Aplicar Cupom de Desconto)
+
+  Administrador -- (Gerenciar Estoque)
+  Administrador -- (Adicionar Produto)
+}
+
+@enduml

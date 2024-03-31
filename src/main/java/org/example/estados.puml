@@ -1,0 +1,16 @@
+@startuml
+title Processo de Login
+
+[*] --> UsuarioNaoLogado : Iniciar
+
+UsuarioNaoLogado --> TentandoLogin : Digita credenciais
+TentandoLogin --> LoginBemSucedido : Credenciais válidas
+TentandoLogin --> LoginFalhou : Credenciais inválidas
+
+LoginFalhou --> TentandoLogin : Tentar novamente
+LoginFalhou --> RecuperandoSenha : Clica "esqueci minha senha"
+RecuperandoSenha --> TentandoLogin : Redefinir senha
+
+LoginBemSucedido --> [*] : Acesso concedido
+
+@enduml

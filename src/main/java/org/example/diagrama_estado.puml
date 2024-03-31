@@ -1,0 +1,14 @@
+@startuml
+[*] --> CarrinhoVazio
+
+CarrinhoVazio --> CarrinhoComItens : Adicionar Item
+CarrinhoComItens --> CarrinhoVazio : Remover Todos os Itens
+CarrinhoComItens --> CarrinhoComItens : Adicionar/Remover Item
+CarrinhoComItens --> Checkout : Iniciar Checkout
+Checkout --> CarrinhoComItens : Voltar ao Carrinho
+Checkout --> CompraFinalizada : Finalizar Compra [endereço válido]
+
+CompraFinalizada --> [*]
+
+CompraFinalizada : enviar email de confirmação
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+
+' Definição das classes
+class Pessoa {
+    - nome : String
+}
+
+class Autor {
+    - especialidade: String
+}
+
+class Membro {
+    - idMembro : int
+    + realizarEmprestimo(LivroExemplar livroExemplar) : void
+    + devolverLivro(LivroExemplar livroExemplar) : void
+}
+
+
+class Livro {
+    - titulo : String
+    - autores : List<Autor>
+}
+
+class Biblioteca {
+    - livros : List<Livro>
+    + adicionarLivro(Livro livro) : void
+    + removerLivro(Livro livro) : boolean
+    + buscarLivro(String titulo) : Livro
+}
+
+class LivroExemplar {
+    - numeroExemplar : int
+    - livro : Livro
+}
+
+class Emprestimo {
+     - membro : Membro
+     - livrosExemplares : List<LivroExemplar>
+     + adicionarLivroExemplar(LivroExemplar livroExemplar) : void
+     + finalizarEmprestimo() : void
+}
+
+' Herança
+Autor --|> Pessoa : extends
+Membro --|> Pessoa : extends
+
+' Associação (Um livro pode ter vários autores)
+Livro "1" -- "*" Autor : has >
+
+' Agregação (Uma biblioteca tem vários livros, mas livros podem existir sem a biblioteca)
+Biblioteca "1" o-- "*" Livro : contains
+
+' Composição (Um empréstimo tem vários LivroExemplar, que não podem existir sem o Emprestimo)
+Emprestimo "1" *-- "*" LivroExemplar : has >
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+object Livro {
+  titulo = "Arquitetura Limpa"
+  autor = "Robert C. Martin"
+  ISBN = "123456789"
+}
+
+object Emprestimo {
+  dataEmprestimo = "2024-03-26"
+  dataDevolucao = "2024-04-09"
+}
+
+object Leitor {
+  nome = "João"
+  id = "001"
+}
+
+Livro -- Emprestimo : possui >
+Emprestimo -- Leitor : registradoPara >
+@enduml
+@startuml
+class Livro {
+  titulo : string
+  autor : string
+  ISBN : string
+  emprestar()
+  devolver()
+}
+
+class Emprestimo {
+  dataEmprestimo : date
+  dataDevolucao : date
+}
+
+class Leitor {
+  nome : string
+  id : string
+}
+
+Livro "1" -- "0..*" Emprestimo : possui >
+Emprestimo "1" -- "1" Leitor : registradoPara >
+@enduml
+

@@ -1,0 +1,15 @@
+@startuml
+object livro1 {
+    class = Livro
+    título = "Arquitetura Limpa"
+    autor = "Uncle Bob"
+}
+
+object usuario1 {
+    class = Usuario
+    nome = "João"
+    ID = "001"
+}
+
+usuario1 --> livro1 : empresta
+@enduml

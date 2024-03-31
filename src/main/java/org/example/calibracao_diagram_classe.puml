@@ -1,0 +1,34 @@
+@startuml
+
+class Item {
+  +id: int
+  +status: String
+  +foto: String
+  +descricao: String
+}
+
+class PlanoDeAcao {
+  +id: int
+  +descricao: String
+  +status: String
+  +itemId: int
+}
+
+class Usuario {
+  +id: int
+  +nome: String
+  +tipo: String
+}
+
+class Relatorio {
+  +id: int
+  +itensCalibrados: List<Item>
+  +planosDeAcao: List<PlanoDeAcao>
+}
+
+Usuario "1" -- "0..*" Item : Cria/Modifica >
+Item "0..1" -- "1" PlanoDeAcao : Possui >
+Relatorio -- "0..*" Item : Agrega >
+Relatorio -- "0..*" PlanoDeAcao : Agrega >
+
+@enduml

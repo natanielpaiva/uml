@@ -1,0 +1,6 @@
+@startuml
+[*] --> Vermelho
+Vermelho --> Amarelo : tempo vermelho completo
+Amarelo --> Verde : tempo amarelo completo
+Verde --> Vermelho : tempo verde completo
+@enduml

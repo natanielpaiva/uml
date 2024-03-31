@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+actor Calibrador
+actor "Gerente do Posto" as Gerente
+actor "Terceiro Ator" as Terceiro
+
+rectangle SistemaDeCalibracao {
+  Calibrador -- (Receber Lista de Itens)
+  Calibrador -- (Preencher Dados de Calibração)
+  (Preencher Dados de Calibração) .> (Adicionar Foto Opcional) : <<extend>>
+  (Preencher Dados de Calibração) .> (Adicionar Descrição Opcional) : <<extend>>
+  Calibrador -- (Marcar Itens NOK)
+
+  Gerente -- (Receber Notificação de Itens NOK)
+  Gerente -- (Preencher Plano de Ação)
+
+  Terceiro -- (Visualizar Lista de Itens Calibrados)
+  Terceiro -- (Visualizar Planos de Ação)
+}
+
+@enduml

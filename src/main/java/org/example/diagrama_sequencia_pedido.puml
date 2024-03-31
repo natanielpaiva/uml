@@ -1,0 +1,12 @@
+@startuml
+actor Cliente
+participant "Sistema de Pedido\n do Restaurante" as Sistema
+participant Cozinha
+
+Cliente -> Sistema: Iniciar Pedido
+Sistema -> Cliente: Mostrar Menu
+Cliente -> Sistema: Selecionar Itens e Confirmar Pedido
+Sistema -> Cozinha: Enviar Pedido para Preparo
+Cozinha -> Sistema: Pedido Preparado
+Sistema -> Cliente: Confirmar Pedido ao Cliente
+@enduml

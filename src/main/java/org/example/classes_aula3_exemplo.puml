@@ -1,0 +1,35 @@
+@startuml Biblioteca
+
+class Livro {
+  -titulo: string
+  -anoPublicacao: int
+  emprestar()
+  devolver()
+}
+
+class Autor {
+  -nome: string
+  -nacionalidade: string
+}
+
+class Emprestimo {
+  -dataEmprestimo: date
+  -dataDevolucao: date
+}
+
+class Leitor {
+  -nome: string
+  -email: string
+}
+
+class Pagina {
+  -numero: int
+  -conteudo: string
+}
+
+Autor "1" -- "0..*" Livro : escreve
+Livro "1" -- "0..1" Emprestimo : está em
+Leitor "1" -- "0..*" Emprestimo : realiza
+Livro "1" -- "*" Pagina : contém
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+[*] --> Inicio
+Inicio --> Validando: Iniciar Pagamento
+Validando --> Aprovado: Validar Informações
+Validando --> Rejeitado: Falha na Validação
+Aprovado --> Processando: Processar Pagamento
+Processando --> Concluido: Confirmar
+Processando --> Falha: Erro no Processamento
+Rejeitado --> [*]
+Falha --> [*]
+Concluido --> [*]
+
+note right of Validando
+  Verifica dados do usuário,
+  saldo disponível e informações do recebedor
+end note
+
+note right of Processando
+  Transação é processada
+  pelo sistema bancário
+end note
+
+@enduml

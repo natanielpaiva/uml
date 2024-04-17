@@ -1,0 +1,22 @@
+@startuml
+start
+:Iniciar Aplicativo;
+:Autenticar Usuário;
+if (Usuário Autenticado?) then (sim)
+  :Selecionar Opção de Pagamento;
+  :Inserir Dados do Recebedor;
+  :Inserir Valor;
+  :Confirmar Pagamento;
+  if (Dados Corretos?) then (sim)
+    :Processar Pagamento;
+    :Exibir Confirmação;
+    stop
+  else (não)
+    :Exibir Mensagem de Erro;
+    stop
+  endif
+else (não)
+  :Exibir Mensagem de Falha na Autenticação;
+  stop
+endif
+@enduml

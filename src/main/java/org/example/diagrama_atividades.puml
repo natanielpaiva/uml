@@ -1,0 +1,14 @@
+@startuml
+start
+:Cliente acessa o sistema de reservas;
+:Verificar disponibilidade de quartos para as datas desejadas;
+if (Quartos disponíveis?) then (sim)
+  :Selecionar tipo de quarto;
+  :Inserir informações pessoais;
+  :Confirmar reserva;
+  :Cliente recebe notificação de confirmação;
+else (não)
+  :Informar indisponibilidade;
+endif
+stop
+@enduml
